@@ -1,0 +1,89 @@
+<DOCTYPE! html>
+    <head>
+        <title> Trip Me Baby </title>
+        
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+        <link rel="stylesheet" href="path/to/font-awesome/css/font-awesome.min.css">
+
+    </head>
+        <script>
+        var ct = 0;
+        var email;
+        window.onload = function(){
+            document.getElementById('f2').style.display = 'none';
+        }
+        
+        function submitEmail(){
+            email = document.getElementById('email').value;
+            console.log(email);
+            document.getElementById('1').style.display = 'none';
+            document.getElementById('f2').style.display = 'block';
+        }
+        
+        function submitQ1(){
+            console.log("Q1 Next clicked");
+        }
+            
+                var destinations = [];
+        function addDestination(){
+            var destination = document.createElement("input");
+            destination.id = "dest"+ct;
+            destination.placeholder = "insert your next destination";
+            console.log(destination.placeholder);
+            document.f2.appendChild(destination);
+            
+            ct++;
+        }
+        
+    
+    </script>
+		
+    <body>
+        
+        <!-- temp nav bar -->
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <a class="navbar-brand" href="#">TMB</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+    <div class="navbar-nav">
+      <a class="nav-item nav-link active" href="#">Home <span class="sr-only">(current)</span></a>
+      <a class="nav-item nav-link" href="#">Features</a>
+      <a class="nav-item nav-link" href="#">Pricing</a>
+      <a class="nav-item nav-link disabled" href="#">Disabled</a>
+    </div>
+  </div>
+</nav>
+        <div class="container">
+            <div class="row">
+            <div class="col-md">
+                <!-- email -->
+                <form id="1">
+                    <div class="form-group">
+                        <label>Let's get started</label>
+                        <input type="email" class="form-control" id="email" placeholder="What's your email?">
+                        <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+                    </div>
+                    <button type="button" class="btn btn-primary" onclick="submitEmail()">Next</button>
+                </form>
+                <!-- Q1 -->
+                <form id="f2">
+                    <div class="form-group">
+                        <label>What is your destination?</label>
+                        <input type="text" class="form-control" id="q1" placeholder="Insert a city, an area, an airport, a bus/train station, an address">
+                        <small d="emailHelp" class="form-text text-muted">  </small>
+                    </div>
+                    <button type="button" class="btn btn-primary" onclick="addDestination()">Add Another Destination</button>
+                    <button type="button" class="btn btn-primary" onclick="submitQ1()">Next</button>
+                </form>
+            </div>
+            </div>
+        </div>
+    </body>
+    <script>
+    
+    
+    
+    </script>
+</DOCTYPE!>

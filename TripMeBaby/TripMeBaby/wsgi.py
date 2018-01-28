@@ -11,6 +11,6 @@ import os
 
 from django.core.wsgi import get_wsgi_application
 
-os.environ.setdefault("DJANGO_SETTINGS_MODULE", "TripMeBaby.settings")
+os.environ.setdefault("DJANGO_SETTINGS_MODULE", "opt.bitnami.apps.django.django_projects.Brickhack_2018.TripMeBaby.TripMeBaby.settings")
 
 application = get_wsgi_application()

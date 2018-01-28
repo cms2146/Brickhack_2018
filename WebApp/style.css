@@ -1,0 +1,54 @@
+.navbar {
+    background-color: #cccccc !important;
+    color: #4c4c4c !important;
+}
+
+.vertical-center {
+  margin-top: 20%;
+}
+body{
+  background: 	#cccccc;
+  padding-top: 10px;
+} 
+
+p{
+  color: #c26d6d; 
+  font-size: 150%;
+  margin: 10px 0 0 10px;
+  white-space: nowrap;
+  overflow: hidden;
+  width: 30em;
+  animation: type 6s steps(60, end); 
+}
+
+p:nth-child(2){
+  animation: type2 8s steps(60, end);
+}
+
+
+span{
+  animation: blink 1s infinite;
+}
+
+@keyframes type{ 
+  from { width: 0; } 
+} 
+
+@keyframes type2{
+  0%{width: 0;}
+  50%{width: 0;}
+  100%{ width: 100; } 
+} 
+
+@keyframes blink{
+  to{opacity: .0;}
+}
+
+::selection{
+  background: #cccccc;
+}
+
+.btn-primary {
+    background-color: #c26d6d !important;
+    border-color: #c26d6d !important;
+}

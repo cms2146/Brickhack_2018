@@ -4,6 +4,8 @@ from django.views.decorators.csrf import csrf_exempt
 from rest_framework import serializers
 from django.http import HttpResponse
 @csrf_exempt
+
+# json -> usable data
 def deserializer(json):
 	stream = BytesIO(json.body)
 	data = JSONParser().parse(stream)

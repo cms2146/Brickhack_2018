@@ -11,7 +11,7 @@ import processing
 def deserializer(json):
     stream = BytesIO(json.body)
     data = JSONParser().parse(stream)
-    #output = processing.views.process_location(data)
-    var = data['location']
-    api_calls.views.get_places("New york")
-    return HttpResponse(var)
+    output = processing.views.process_location(data)
+    #var = data['location']
+    #api_calls.views.get_places("New york")
+    return HttpResponse(output)

@@ -3,131 +3,108 @@
         <title> Trip Me Baby </title>
         
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+        <link rel="stylesheet" href="style.css">
 
     </head>
         <script>
-        var ct = 0;
         var email;
         window.onload = function(){
-            // hide the second form
-            document.getElementById('f2').style.display = 'none';
-            addDestination();
-            
+            // hide the form
+            document.getElementById("f2").style.display = 'none'; 
+            document.getElementById("f3").style.display = 'none'; 
+            document.getElementById("f4").style.display = 'none'; 
+            document.getElementById("output").style.display = 'none'; 
         }
-        
         function submitEmail(){
             email = document.getElementById('email').value;
-            console.log(email);
             document.getElementById('1').style.display = 'none';
             document.getElementById('f2').style.display = 'block';
+        }
+        function formShow(){
+            document.getElementById("f3").style.display = 'none'; 
+            document.getElementById('f2').style.display = 'block';
+        }
             
+        function showResults(){
+            document.getElementById("f2").style.display = 'none';
+            document.getElementById("f3").style.display = 'none';
+            document.getElementById("f4").style.display = 'block';
         }
         
-        function submitQ1(){
-            console.log("Q1 Next clicked");
+        function startOver(){
+            location.reload();
+            // clear all results data here
         }
             
-        var destinations = {};
-            
-        function addOptions(dl){
-            dl.innerHTML = "<option value=\"accounting\"><option value=\"airport\"><option value=\"amusement_park\"><option value=\"aquarium\"><option value=\"art_gallery\"><option value=\"atm\"><option value=\"bakery\"><option value=\"bank\"><option value=\"bar\"><option value=\"beauty_salon\"><option value=\"bicycle_store\"><option value=\"book_store\"><option value=\"bowling_alley\"><option value=\"bus_station\"><option value=\"cafe\"><option value=\"campground\"><option value=\"car_dealer\"><option value=\"car_rental\"><option value=\"car_repair\"><option value=\"car_wash\"><option value=\"casino\"><option value=\"cemetery\"><option value=\"church\"><option value=\"city_hall\"><option value=\"clothing_store\"><option value=\"convenience_store\"><option value=\"courthouse\"><option value=\"dentist\"><option value=\"department_store\"><option value=\"doctor\"><option value=\"electrician\"><option value=\"electronics_store\"><option value=\"embassy\"><option value=\"fire_station\"><option value=\"florist\"><option value=\"funeral_home\"><option value=\"furniture_store\"><option value=\"gas_station\"><option value=\"gym\"><option value=\"hair_care\"><option value=\"hardware_store\"><option value=\"hindu_temple\"><option value=\"home_goods_store\"><option value=\"hospital\"><option value=\"insurance_agency\"><option value=\"jewelry_store\"><option value=\"laundry\"><option value=\"lawyer\"><option value=\"library\"><option value=\"liquor_store\"><option value=\"local_government_office\"><option value=\"locksmith\"><option value=\"lodging\"><option value=\"meal_delivery\"><option value=\"meal_takeaway\"><option value=\"mosque\"><option value=\"movie_rental\"><option value=\"movie_theater\"><option value=\"moving_company\"><option value=\"museum\"><option value=\"night_club\"><option value=\"painter\"><option value=\"park\"><option value=\"parking\"><option value=\"pet_store\"><option value=\"pharmacy\"><option value=\"physiotherapist\"><option value=\"plumber\"><option value=\"police\"><option value=\"post_office\"><option value=\"real_estate_agency\"><option value=\"restaurant\"><option value=\"roofing_contractor\"><option value=\"rv_park\"><option value=\"school\"><option value=\"shoe_store\"><option value=\"shopping_mall\"><option value=\"spa\"><option value=\"stadium\"><option value=\"storage\"><option value=\"store\"><option value=\"subway_station\"><option value=\"supermarket\"><option value=\"synagogue\"><option value=\"taxi_stand\"><option value=\"train_station\"><option value=\"transit_station\"><option value=\"travel_agency\"><option value=\"veterinary_care\"><option value=\"zoo\">"
-            ;
-        }
-            
-        function addDestination(){
-            
-            // create a new destination name field
-            var destination = document.createElement("input");
-            destination.id = "dest"+ct;
-            destination.placeholder = "Insert your Destination";
-            destination.class = "form-control";
-            destination.type = "text";
-            console.log(destination.id);
-            document.getElementById('firstDest').appendChild(document.createElement("br"));
-            document.getElementById('firstDest').appendChild(destination);
-            
-            // create a new arrival time field
-            
-            var arrLabel = document.createElement("label");
-            arrLabel.innerHTML = "When are you arriving there?";
-            var dtArr = document.createElement("input");
-            dtArr.type = "datetime-local";
-            dtArr.id = "dtArrival" + ct;
-            document.getElementById('firstDest').appendChild(document.createElement("br"));
-            document.getElementById('firstDest').appendChild(arrLabel);
-            document.getElementById('firstDest').appendChild(dtArr);
-            
-            // create a new departure time field
-            
-            var depLabel = document.createElement("label");
-            depLabel.innerHTML = "When are you leaving?";
-            var dtDep = document.createElement("input");
-            dtDep.type = "datetime-local";
-            dtDep.id = "dtDeparture" + ct;
-            document.getElementById('firstDest').appendChild(document.createElement("br"));
-            document.getElementById('firstDest').appendChild(depLabel);
-            document.getElementById('firstDest').appendChild(dtDep);
-            //console.log(document.getElementById(dtDep.id));
-            
-            
-            // create a price range slider
-            
-            var priceLabel = document.createElement("label");
-            priceLabel.innerHTML = "From 1 to 5, how pricey would you want your activities to be?";
-            var priceSldr = document.createElement("input");
-            priceSldr.id = "priceSldr" + ct;
-            priceSldr.type = "range";
-            priceSldr.min = "1";
-            priceSldr.max = "5";
-            priceSldr.value = "3";
-            var priceValue = document.createElement("label");
-            priceSldr.oninput = function() {
-                priceValue.innerHTML = this.value;
+        function collectFields(){
+            if (document.getElementById("dest").value == ''){
+                alert("Location field must be filled out.")
+                return;
             }
-            document.getElementById('firstDest').appendChild(document.createElement("br"));
-            document.getElementById('firstDest').appendChild(priceLabel);
-            document.getElementById('firstDest').appendChild(priceSldr);
-            document.getElementById('firstDest').appendChild(priceValue);
-            
-            // collect tags
-            
-            var dlLabel = document.createElement("label");
-            dlLabel.innerHTML = "What type of activities would you want to do while you are there?"
-            var dl = document.createElement("datalist");
-            dl.id = "dl"+ct;
-            addOptions(dl);
-            console.log(dl);
-            document.getElementById('firstDest').appendChild(dl);
-            
-            
-            
-            
-            // create a JSON object for a new particular location
-            
-            // add the JSON object to the destinations array
-            
-            // increment the count of destinations 
-            
-            ct++;
-        }
-            
-        function removeDestination(){
-            
-            // finish this feature
-            
-            ct--;
-            
-        }
+            else{
+                var startDate;
+                var endDate;
+                var startTime;
+                var endTime;
+                
+                var dtArr = document.getElementById("arr").value;
+                var dtDep = document.getElementById("dep").value;
+                if(dtArr != '' && dtDep != ''){
+                    startDate = dtArr.split("T")[0];
+                    startTime = dtArr.split("T")[1];
+                    endDate = dtDep.split("T")[0];
+                    endTime = dtDep.split("T")[1];
+                }
+                else{
+                    startDate = '';
+                    endDate = '';
+                    startTime = '';
+                    endTime = '';
+                }
+                
+                var location = document.getElementById("dest").value;
+                var radius = document.getElementById("rad").value;
+                var budget = document.getElementById("price").value;
+                var tags = [document.getElementById("dl").value];
 
-        
+                const postData = {
+                    "location":location,
+                    "radius":radius,
+                    "budget":budget,
+                    "startDate":startDate,
+                    "endDate":endDate,
+                    "tags":tags,
+                    "startTime":startTime,
+                    "endTime":endTime
+                };
+                
+                var xhr = new XMLHttpRequest();
+                var url = "radiant-refugee-87300.herokuapp.com/getPlaces";
+                xhr.open("POST", url, true);
+                xhr.setRequestHeader("Content-type", "application/json");
+                xhr.onreadystatechange = function () {
+                if (xhr.readyState === 4 && xhr.status === 200) {
+                    var json = JSON.parse(xhr.responseText);
+                }};
+                var data = JSON.stringify(postData);
+                xhr.send(data);
+                
+            }
+            
+            document.getElementById('f2').reset();
+            document.getElementById('f2').style.display = 'none';
+            document.getElementById('output').style.display = 'block';
+            document.getElementById('f3').style.display = 'block';
+
+        }
     
     </script>
 		
     <body>
         
         <!-- temp nav bar -->
-        <nav class="navbar navbar-expand-lg navbar-light bg-light">
-  <a class="navbar-brand" href="#">TMB</a>
+        <nav class="navbar navbar-expand-sm navbar-light bg-light">
+  <a class="navbar-brand" href="#"><img src="images/logofinal.png" width="80px" height="50px"></a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
@@ -136,32 +113,59 @@
       <a class="nav-item nav-link active" href="#">Home <span class="sr-only">(current)</span></a>
       <a class="nav-item nav-link" href="#">Features</a>
       <a class="nav-item nav-link" href="#">Pricing</a>
-      <a class="nav-item nav-link disabled" href="#">Disabled</a>
     </div>
   </div>
 </nav>
-        <div class="container">
-            <div class="row">
-            <div class="col-md">
+        
+    <div class="container">
+            <div class="row align-items-center vertical-center">
+            <div class="col"></div>
+            <div class="col-8">
                 <!-- email -->
                 <form id="1">
                     <div class="form-group">
-                        <label>Let's get started</label>
+                        <label><p>Let's get started<span>|</span></p></label>
                         <input type="email" class="form-control" id="email" placeholder="What's your email?">
                         <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
                     </div>
                     <button type="button" class="btn btn-primary" onclick="submitEmail()">Next</button>
                 </form>
-                
                 <!-- Location and date/time range -->
                 <form id="f2">
-                    <div class="form-group" id="firstDest">
-                    </div>
-                    <button type="button" class="btn btn-primary" onclick="addDestination()">Add Another Destination</button>
-                    <button type="button" class="btn btn-primary" onclick="addDestination()">Remove Last Destination</button>
-                    <button type="button" class="btn btn-primary" onclick="submitQ1()">Next</button>
+                    
+                    Where are you going? 
+                    <input id="dest" placeholder="Insert your Destination" class="form-control" type="text" required>
+                    When are you arriving there?
+                    <input id="arr"  class="form-control" type="datetime-local">
+                    When are you leaving?
+                    <input id="dep"  class="form-control" type="datetime-local">
+                    From 1 to 5, how pricey would you want your activities to be?
+                    <input id="price"  class="form-control" type="range" min="1" max="5" value="3">
+                    How far are you willing to travel?
+                    <input id="rad" type="text" class="form-control" onkeypress='return event.charCode >= 48 && event.charCode <= 57'>
+                    What kind of place would you want to visit?
+                    <input list="dl" class="form-control">
+                        <datalist id="dl">
+                            <option value="accounting"><option value="airport"><option value="amusement_park"><option value="aquarium"><option value="art_gallery"><option value="atm"><option value="bakery"><option value="bank"><option value="bar"><option value="beauty_salon"><option value="bicycle_store"><option value="book_store"><option value="bowling_alley"><option value="bus_station"><option value="cafe"><option value="campground"><option value="car_dealer"><option value="car_rental"><option value="car_repair"><option value="car_wash"><option value="casino"><option value="cemetery"><option value="church"><option value="city_hall"><option value="clothing_store"><option value="convenience_store"><option value="courthouse"><option value="dentist"><option value="department_store"><option value="doctor"><option value="electrician"><option value="electronics_store"><option value="embassy"><option value="fire_station"><option value="florist"><option value="funeral_home"><option value="furniture_store"><option value="gas_station"><option value="gym"><option value="hair_care"><option value="hardware_store"><option value="hindu_temple"><option value="home_goods_store"><option value="hospital"><option value="insurance_agency"><option value="jewelry_store"><option value="laundry"><option value="lawyer"><option value="library"><option value="liquor_store"><option value="local_government_office"><option value="locksmith"><option value="lodging"><option value="meal_delivery"><option value="meal_takeaway"><option value="mosque"><option value="movie_rental"><option value="movie_theater"><option value="moving_company"><option value="museum"><option value="night_club"><option value="painter"><option value="park"><option value="parking"><option value="pet_store"><option value="pharmacy"><option value="physiotherapist"><option value="plumber"><option value="police"><option value="post_office"><option value="real_estate_agency"><option value="restaurant"><option value="roofing_contractor"><option value="rv_park"><option value="school"><option value="shoe_store"><option value="shopping_mall"><option value="spa"><option value="stadium"><option value="storage"><option value="store"><option value="subway_station"><option value="supermarket"><option value="synagogue"><option value="taxi_stand"><option value="train_station"><option value="transit_station"><option value="travel_agency"><option value="veterinary_care"><option value="zoo">
+                        </datalist>
+                    <br>
+                    <button type="button" class="btn btn-primary" onclick="collectFields()">Submit Destination</button>
+                    <button type="button" class="btn btn-primary" onclick="showResults()">Next</button>
+                </form>
+                <div id="output">
+                    <p>Your travel plan so far<span>|</span></p>
+                    <!-- js append labels with place names and info on result places here-->
+                </div>
+                <form id="f3">
+                    <button type="button" class="btn btn-primary" onclick="formShow()">Add Another Destination</button>
+                    <button type="button" class="btn btn-primary" onclick="showResults()">Next</button>
+                </form>
+                <form id="f4">
+                     <button type="button" class="btn btn-primary" onclick="">Email Results</button>
+                     <button type="button" class="btn btn-primary" onclick="startOver()">Start Over</button>
                 </form>
             </div>
+            <div class="col"></div>
             </div>
         </div>
     </body>

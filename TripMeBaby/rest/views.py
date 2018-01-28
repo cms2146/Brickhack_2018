@@ -5,12 +5,12 @@ from rest_framework import serializers
 from django.http import HttpResponse
 import api_calls.views
 import processing
-@csrf_exempt
 
-# json -> usable data
+
+@csrf_exempt
 def deserializer(json):
-	stream = BytesIO(json.body)
-	data = JSONParser().parse(stream)
-	output = processing.process_location(data)
-	#api_calls.views.get_places("New york")
-	return HttpResponse(output)
+    stream = BytesIO(json.body)
+    data = JSONParser().parse(stream)
+    var = data['location']
+    api_calls.views.get_places("New york")
+    return HttpResponse(var)

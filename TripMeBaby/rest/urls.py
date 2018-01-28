@@ -1,7 +1,7 @@
 from django.urls import path
 
-from . import views
+import TripMeBaby.rest.views
 
 urlpatterns = [
-    path('deserializer', views.deserializer),
+    path('deserializer', TripMeBaby.rest.views.deserializer),
 ]

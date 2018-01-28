@@ -4,7 +4,7 @@ from django.views.decorators.csrf import csrf_exempt
 from rest_framework import serializers
 from django.http import HttpResponse
 import TripMeBaby.api_calls.views
-import TripMeBaby.processing
+import TripMeBaby.processing.views
 
 
 @csrf_exempt

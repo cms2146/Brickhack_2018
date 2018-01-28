@@ -24,5 +24,6 @@ class output_serializer(serializers.Serializer):
     travel_time = serializers.CharField()
 
 def basic_deserializer(json):
-    data = JSONParser().parse(json)
-    return data;
+    stream = BytesIO(json.body)
+    data = JSONParser().parse(stream)
+    return data

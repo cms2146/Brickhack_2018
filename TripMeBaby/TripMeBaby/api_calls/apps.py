@@ -2,4 +2,4 @@ from django.apps import AppConfig
 
 
 class ApiCallsConfig(AppConfig):
-    name = 'api_calls'
+	name = 'api_calls'

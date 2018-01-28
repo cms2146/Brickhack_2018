@@ -9,9 +9,9 @@ import TripMeBaby.processing.views
 
 @csrf_exempt
 def deserializer(json):
-    stream = BytesIO(json.body)
-    data = JSONParser().parse(stream)
-    output = TripMeBaby.processing.views.process_location(data)
-    #var = data['location']
-    #api_calls.views.get_places("New york")
-    return HttpResponse(output)
+	stream = BytesIO(json.body)
+	data = JSONParser().parse(stream)
+	output = TripMeBaby.processing.views.process_location(data)
+	#var = data['location']
+	#api_calls.views.get_places("New york")
+	return HttpResponse(output)

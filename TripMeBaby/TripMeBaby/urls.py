@@ -15,8 +15,7 @@ Including another URLconf
 """
 from django.urls import include, path
 from django.contrib import admin
-
 urlpatterns = [
 	path('admin/', admin.site.urls),
-	path('rest/', include('rest.urls'))
+        path('rest/',include('TripMeBaby.rest.urls'))
 ]

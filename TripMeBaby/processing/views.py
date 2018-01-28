@@ -3,8 +3,8 @@ from django.utils.six import BytesIO
 from rest_framework.parsers import JSONParser
 from django.views.decorators.csrf import csrf_exempt
 # Create your views here.
-import TripMeBaby.rest
-import TripMeBaby.api_calls
+import rest
+import api_calls
 
 def process_location(data):
     location = data['location']         #string

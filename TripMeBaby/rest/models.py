@@ -1,5 +1,6 @@
 from django.db import models
-
+from django.utils.six import BytesIO
+from rest_framework.parsers import JSONParser
 # Create your models here.
 
 from rest_framework import serializers
@@ -23,6 +24,5 @@ class output_serializer(serializers.Serializer):
     travel_time = serializers.CharField()
 
 def basic_deserializer(json):
-    stream = BytesIO(json.body)
-    data = JSONParser().parse(stream)
+    data = JSONParser().parse(json)
     return data;

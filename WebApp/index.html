@@ -3,7 +3,6 @@
         <title> Trip Me Baby </title>
         
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-        <link rel="stylesheet" href="path/to/font-awesome/css/font-awesome.min.css">
 
     </head>
         <script>
@@ -26,11 +25,37 @@
             
                 var destinations = [];
         function addDestination(){
+            
+            // create a new destination name field
             var destination = document.createElement("input");
             destination.id = "dest"+ct;
             destination.placeholder = "insert your next destination";
-            console.log(destination.placeholder);
-            document.f2.appendChild(destination);
+            destination.class = "form-control";
+            destination.type = "text";
+            console.log(destination.id);
+            document.getElementById('firstDest').appendChild(destination);
+            
+            // create a new arrival time field
+            
+            var arrLabel = document.createElement("label");
+            arrLabel.innerHTML = "When are you arriving there?";
+            var dtArr = document.createElement("input");
+            dtArr.type = "datetime-local";
+            dtArr.id = "dtArrival" + ct;
+            document.getElementById('firstDest').appendChild(arrLabel);
+            document.getElementById('firstDest').appendChild(dtArr);
+            
+            // create a new departure time field
+            
+            var depLabel = document.createElement("label");
+            depLabel.innerHTML = "When are you leaving?";
+            var dtDep = document.createElement("input");
+            dtDep.type = "datetime-local";
+            dtDep.id = "dtDeparture" + ct;
+            document.getElementById('firstDest').appendChild(depLabel);
+            document.getElementById('firstDest').appendChild(dtDep);
+            
+            // increment the count of destinations 
             
             ct++;
         }
@@ -69,10 +94,14 @@
                 </form>
                 <!-- Q1 -->
                 <form id="f2">
-                    <div class="form-group">
+                    <div class="form-group" id="firstDest">
                         <label>What is your destination?</label>
                         <input type="text" class="form-control" id="q1" placeholder="Insert a city, an area, an airport, a bus/train station, an address">
-                        <small d="emailHelp" class="form-text text-muted">  </small>
+                        <small class="form-text text-muted">  </small>
+                        <label>When are you arriving there?</label>
+                        <input type="datetime-local" class="form-control" id="dtArrival">
+                        <label>When are you leaving?</label>
+                        <input type="datetime-local" class="form-control" id="dtDeparture">
                     </div>
                     <button type="button" class="btn btn-primary" onclick="addDestination()">Add Another Destination</button>
                     <button type="button" class="btn btn-primary" onclick="submitQ1()">Next</button>
